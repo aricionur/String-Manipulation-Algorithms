@@ -20,6 +20,20 @@ class StringUtils {
 
     return reversedStrCharArr.join("")
   }
+
+  reverseOrderOfWords(string) {
+    if (!string) return string
+
+    const reversedWords = []
+    const words = string.split(" ")
+
+    for (let i = words.length - 1; i >= 0; i--) reversedWords.push(words[i])
+    return reversedWords.join(" ")
+
+    // solution -2
+    // words.reverse()
+    // return words.join(" ")
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -29,3 +43,6 @@ console.log("numOfVowels:", numOfVowels)
 
 const reversedString = stringManupilations.reverse("hello")
 console.log("reversedString:", reversedString)
+
+const reversedWordsString = stringManupilations.reverseOrderOfWords("test hello world")
+console.log("reversedWordsString:", reversedWordsString)

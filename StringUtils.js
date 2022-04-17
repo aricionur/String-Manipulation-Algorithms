@@ -118,6 +118,17 @@ class StringUtils {
 
     // return charHasHighestFreq
   }
+
+  capitalizeFirstLettersAndRemoveExtraSpaces(string) {
+    return (
+      string &&
+      string
+        .split(" ")
+        .filter(word => word !== "")
+        .map(word => word[0].toUpperCase() + word.substring(1, word.length).toLowerCase())
+        .join(" ")
+    )
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -142,3 +153,6 @@ console.log("nonDuplicatedCharString:", nonDuplicatedCharString)
 
 const mostRepeatedChar = stringManupilations.findMostRepeatedChar("Hellooo worlddddd!!...")
 console.log("mostRepeatedChar:", mostRepeatedChar)
+
+const capitalizedWords = stringManupilations.capitalizeFirstLettersAndRemoveExtraSpaces("  trees   are        BEAUTIFUL.  ")
+console.log("capitalizedWords:'" + capitalizedWords + "'")

@@ -30,7 +30,7 @@ class StringUtils {
     for (let i = words.length - 1; i >= 0; i--) reversedWords.push(words[i])
     return reversedWords.join(" ")
 
-    // solution -2
+    /* solution - 2 */
     // words.reverse()
     // return words.join(" ")
   }
@@ -60,6 +60,29 @@ class StringUtils {
 
     return true
   }
+
+  removeDuplicatedChars(string) {
+    if (!string) return string
+
+    const seen = {}
+    const newStringCharArr = []
+
+    for (const char of string) {
+      if (!seen[char]) {
+        seen[char] = 1
+        newStringCharArr.push(char)
+      }
+    }
+    return newStringCharArr.join("")
+
+    /* Solution - 2 */
+    // const charSet = new Set()
+    // for (const char of string) charSet.add(char)
+    // return [...charSet].join("")
+
+    /* Solution - 3 */
+    // return [...new Set(string)].join("")
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -77,4 +100,7 @@ const isRotationExist = stringManupilations.isRotationExist("ABCD", "CDAB")
 console.log("isRotationExist:", isRotationExist)
 
 const isRotationExist_2 = stringManupilations.isRotationExist("ABCD", "ADBC")
-console.log("isRotationExist:", isRotationExist_2)
+console.log("isRotationExist_2:", isRotationExist_2)
+
+const nonDuplicatedCharString = stringManupilations.removeDuplicatedChars("Hellooo!!...")
+console.log("nonDuplicatedCharString:", nonDuplicatedCharString)

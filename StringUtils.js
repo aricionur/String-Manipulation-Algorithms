@@ -156,6 +156,17 @@ class StringUtils {
     /* Solution - 2 */
     // ASCII solution of findMostRepeatedChar() can be used here too.
   }
+
+  isPalindrom(string) {
+    if (!string) return false
+
+    const stringLen = string.length
+    const middleIndex = Math.floor(stringLen / 2)
+
+    for (let i = 0; i < middleIndex; i++) if (string[i] !== string[stringLen - 1 - i]) return false
+
+    return true
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -186,3 +197,6 @@ console.log("capitalizedWords:'" + capitalizedWords + "'")
 
 const isAnagram = stringManupilations.isAnagramOfEachOther("abce", "aecb")
 console.log("isAnagram:", isAnagram)
+
+const isPalindrom = stringManupilations.isPalindrom("abccba")
+console.log("isPalindrom:", isPalindrom)

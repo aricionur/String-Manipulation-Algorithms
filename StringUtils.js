@@ -11,9 +11,21 @@ class StringUtils {
 
     return numOfVowels
   }
+
+  reverse(string) {
+    if (!string) return string
+
+    let reversedStrCharArr = []
+    for (let i = string.length - 1; i >= 0; i--) reversedStrCharArr.push(string[i])
+
+    return reversedStrCharArr.join("")
+  }
 }
 
 const stringManupilations = new StringUtils()
 
-const numOfVowels = stringManupilations.getNumOfVowels(null)
+const numOfVowels = stringManupilations.getNumOfVowels("hello")
 console.log("numOfVowels:", numOfVowels)
+
+const reversedString = stringManupilations.reverse("hello")
+console.log("reversedString:", reversedString)

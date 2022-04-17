@@ -34,6 +34,32 @@ class StringUtils {
     // words.reverse()
     // return words.join(" ")
   }
+
+  isRotationExist(string1, string2) {
+    if (!string1 || !string2 || string1.length !== string2.length) return false
+
+    const firstChar = string1[0]
+    let firstMatchingCharIndex = null
+
+    for (let i = 0; i < string2.length; i++) {
+      if (string2[i] === firstChar) {
+        firstMatchingCharIndex = i
+        break
+      }
+    }
+
+    if (!firstMatchingCharIndex) return false
+
+    const string2Len = string2.length
+    let currentString2CharIndex = firstMatchingCharIndex
+
+    for (let i = 0; i < string1.length; i++) {
+      if (string1[i] !== string2[currentString2CharIndex++]) return false
+      if (currentString2CharIndex === string2Len) currentString2CharIndex = 0
+    }
+
+    return true
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -46,3 +72,9 @@ console.log("reversedString:", reversedString)
 
 const reversedWordsString = stringManupilations.reverseOrderOfWords("test hello world")
 console.log("reversedWordsString:", reversedWordsString)
+
+const isRotationExist = stringManupilations.isRotationExist("ABCD", "CDAB")
+console.log("isRotationExist:", isRotationExist)
+
+const isRotationExist_2 = stringManupilations.isRotationExist("ABCD", "ADBC")
+console.log("isRotationExist:", isRotationExist_2)

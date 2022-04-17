@@ -129,6 +129,33 @@ class StringUtils {
         .join(" ")
     )
   }
+
+  isAnagramOfEachOther(string1, string2) {
+    if (!string1 || !string2 || string1.length !== string2.length) return false
+
+    const string1CharFrequencies = {}
+    const string2CharFrequencies = {}
+
+    for (let i = 0; i < string1.length; i++) {
+      if (!string1CharFrequencies[string1[i]]) string1CharFrequencies[string1[i]] = 1
+      else string1CharFrequencies[string1[i]] += 1
+
+      if (!string2CharFrequencies[string2[i]]) string2CharFrequencies[string2[i]] = 1
+      else string2CharFrequencies[string2[i]] += 1
+    }
+
+    for (const [char, freq] of Object.entries(string1CharFrequencies)) {
+      if (freq === string2CharFrequencies[char]) delete string2CharFrequencies[char]
+      else return false
+    }
+
+    if (Object.keys(string2CharFrequencies).length) return false
+
+    return true
+
+    /* Solution - 2 */
+    // ASCII solution of findMostRepeatedChar() can be used here too.
+  }
 }
 
 const stringManupilations = new StringUtils()
@@ -156,3 +183,6 @@ console.log("mostRepeatedChar:", mostRepeatedChar)
 
 const capitalizedWords = stringManupilations.capitalizeFirstLettersAndRemoveExtraSpaces("  trees   are        BEAUTIFUL.  ")
 console.log("capitalizedWords:'" + capitalizedWords + "'")
+
+const isAnagram = stringManupilations.isAnagramOfEachOther("abce", "aecb")
+console.log("isAnagram:", isAnagram)
